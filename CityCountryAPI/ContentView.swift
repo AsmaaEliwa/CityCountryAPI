@@ -8,12 +8,19 @@
 import SwiftUI
 
 struct ContentView: View {
+    @ObservedObject var apiManager = APIManager.shared
     var body: some View {
         VStack {
             Image(systemName: "globe")
                 .imageScale(.large)
                 .foregroundStyle(.tint)
             Text("Hello, world!")
+            ScrollView{
+                ForEach(apiManager.cities , id:\.self){city in
+                    
+                    Text(city.city)
+                }
+            }
         }
         .padding()
     }
